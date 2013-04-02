@@ -1,0 +1,30 @@
+Acme\DemoBundle\Entity\User:
+    properties:
+        first_name:
+            - NotBlank: ~
+        last_name:
+            - NotBlank: ~
+        email:
+            - NotBlank: ~
+            #- Type: Email
+        birthday:
+            - NotBlank: ~
+        shoe_size:
+            - NotBlank: ~
+            - Range:
+                min: 30
+<<<<<<< HEAD
+                max: 50
+        ice_cream:
+            - NotBlank: ~
+        car:
+            - NotBlank: ~
+        book:
+            - NotBlank: ~
+        date:
+            - NotBlank: ~
+        country:
+            - NotBlank: ~
+=======
+                max: 50
+>>>>>>> e0464aca53ace8f89dc388dfd6af0e781068f3ec

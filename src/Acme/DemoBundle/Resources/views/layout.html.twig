@@ -1,0 +1,99 @@
+{#{% extends "TwigBundle::layout.html.twig" %}#}
+
+{#{% block head %}#}
+    {#<link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />#}
+    {#<link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" />#}
+{#{% endblock %}#}
+
+{#{% block title 'Demo Bundle' %}#}
+
+{#{% block body %}#}
+    {#{% for flashMessage in app.session.flashbag.get('notice') %}#}
+        {#<div class="flash-message">#}
+            {#<em>Notice</em>: {{ flashMessage }}#}
+        {#</div>#}
+    {#{% endfor %}#}
+
+    {#{% block content_header %}#}
+        {#<ul id="menu">#}
+            {#{% block content_header_more %}#}
+                {#<li><a href="{{ path('_demo') }}">Demo Home</a></li>#}
+            {#{% endblock %}#}
+        {#</ul>#}
+
+        {#<div style="clear: both"></div>#}
+    {#{% endblock %}#}
+
+    {#<div class="block">#}
+        {#{% block content %}{% endblock %}#}
+    {#</div>#}
+
+    {#{% if code is defined %}#}
+        {#<h2>Code behind this page</h2>#}
+        {#<div class="block">#}
+            {#<div class="symfony-content">{{ code|raw }}</div>#}
+        {#</div>#}
+    {#{% endif %}#}
+{#{% endblock %}#}
+
+<!DOCTYPE html>
+<html>
+    {% block head %}
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            function iterateTimer() {
+                var timer_element = $('#timer');
+                var seconds = timer_element.html();
+                seconds--;
+                if (seconds <= 0) {
+                    alert('Time is over ;(');
+                }
+
+                timer_element.html((seconds > 0) ? seconds : 0);
+
+                if (seconds > 0) {
+                    setTimeout(iterateTimer, 1000);
+                }
+            }
+
+            $(document).ready(function () {
+                setTimeout(iterateTimer, 1000);
+            })
+        </script>
+    {% endblock %}
+
+    {% block title 'Fancy Survey' %}
+
+    {% block body %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ asset('js/jquery.js') }}"><\/script>')</script>
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="/">Fancy Survey</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="first active">        <a href="/">HAPPY TESTERS</a>                </li>
+                            <li>        <a href="/two">STATUS</a>                </li>
+                            <li>        <a href="/three">INVITE FRIENDS</a>                </li>
+                            <li class="last">        <a href="/components">TODAY`S SURVEY</a>                </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            {% block content %}{% endblock %}
+        </div>
+    {% endblock %}
+</html>

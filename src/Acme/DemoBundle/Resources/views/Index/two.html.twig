@@ -1,0 +1,59 @@
+{% extends "AcmeDemoBundle::layout.html.twig" %}
+
+{% block content %}
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="span9">
+                <div class="row">
+                    <span id="timer">{{ timer }}</span> SECONDS
+                    <legend>Step Two</legend>
+                    <form class="form-horizontal" method="post">
+                        {{ form_widget(form, {'form_type': 'horizontal'}) }}
+                        <button type="submit" id="submit" class="btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#submit").click(function() {
+            var ice_cream = $("#second_ice_cream").val();
+            var car = $("#second_car").val();
+            var book = $("#second_book").val();
+            var date_year = $("#second_date_year").val();
+            var date_month = $("#second_date_month").val();
+            var date_day = $("#second_date_day").val();
+            var country = $("#second_country").val();
+            var token = $("#second__token").val();
+            $.ajax({
+                url: '/two',
+                data: ({
+                    second: ({
+                        ice_cream: ice_cream,
+                        car: car,
+                        book: book,
+                        date: ({
+                            year: date_year,
+                            month: date_month,
+                            day: date_day
+                        }),
+                        country: country,
+                        _token: token
+                    })
+                }),
+                type: "POST",
+                dataType: 'json',
+                success: function (data) {
+                    if(data.success){
+                        window.location.href = "http://symfony/three";
+                    } else {
+                        $('html').html(data.view);
+                    }
+                }
+            });
+            return false;
+        });
+    </script>
+{% endblock %}

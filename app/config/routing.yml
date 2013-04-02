@@ -1,0 +1,11 @@
+index:
+    path:      /
+    defaults:  { _controller: AcmeDemoBundle:Index:index }
+
+two:
+    path:      /two
+    defaults:  { _controller: AcmeDemoBundle:Index:two }
+
+three:
+    path:      /three
+    defaults:  { _controller: AcmeDemoBundle:Index:three }

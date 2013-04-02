@@ -1,0 +1,61 @@
+{% extends "AcmeDemoBundle::layout.html.twig" %}
+
+{% block content %}
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="span9">
+                <div class="row">
+                    <span id="timer">{{ timer }}</span> SECONDS
+                    <legend>Step One</legend>
+                    <form class="form-horizontal" method="post">
+                        {{ form_widget(form, {'form_type': 'horizontal'}) }}
+                        <button type="submit" class="btn" id="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#submit").click(function() {
+            var first_name = $("#first_first_name").val();
+            var last_name = $("#first_last_name").val();
+            var email = $("#first_email").val();
+            var birthday_year = $("#first_birthday_year").val();
+            var birthday_month = $("#first_birthday_month").val();
+            var birthday_day = $("#first_birthday_day").val();
+            var shoe_size = $("#first_shoe_size").val();
+            var token = $("#first__token").val();
+            $.ajax({
+                url: '/',
+                data: ({
+                    first: ({
+                        first_name: first_name,
+                        last_name: last_name,
+                        email: email,
+                        birthday: ({
+                            year: birthday_year,
+                            month: birthday_month,
+                            day: birthday_day
+                        }),
+                        shoe_size: shoe_size,
+                        _token: token
+                    })
+                }),
+                type: "POST",
+                dataType: 'json',
+                success: function (data) {
+                    if(data.success){
+                        window.location.href = "http://symfony/two";
+                    } else {
+                        $('html').html(data.view);
+                    }
+                }
+            });
+            return false;
+        });
+    </script>
+{% endblock %}
+
+
