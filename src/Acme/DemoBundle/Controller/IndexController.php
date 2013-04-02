@@ -34,8 +34,10 @@ class IndexController extends Controller
         $form = $this->createForm(new First(), new User);
 
         if ($request->isXmlHttpRequest()) {
+
             $form->bind($request);
             $user = $form->getData();
+            //var_dump($user);
 
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -76,6 +78,13 @@ class IndexController extends Controller
         $user = $this->getDoctrine()
             ->getRepository('AcmeDemoBundle:User')
             ->find($id);
+
+        $user->setIceCream('');
+        $user->setCar('');
+        $user->setBook('');
+        $user->setDate(new \DateTime());
+        $user->setCountry('');
+
         $form = $this->createForm(new Second(), $user);
 
         if ($request->isXmlHttpRequest()) {

@@ -49,6 +49,18 @@ class First extends AbstractType
             ),
         ));
 
+        $builder->add('ice_cream', 'hidden');
+        $builder->add('car', 'hidden');
+        $builder->add('book', 'hidden');
+        $builder->add('date', 'date', array(
+            'required'      => false,
+            'attr'  => array(
+                'style' => "display: none;",
+                'hidden' => true
+            ),
+        ));
+        $builder->add('country', 'hidden');
+
         return $builder;
     }
 

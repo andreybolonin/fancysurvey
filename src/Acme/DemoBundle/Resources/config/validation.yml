@@ -13,7 +13,6 @@ Acme\DemoBundle\Entity\User:
             - NotBlank: ~
             - Range:
                 min: 30
-<<<<<<< HEAD
                 max: 50
         ice_cream:
             - NotBlank: ~
@@ -25,6 +24,3 @@ Acme\DemoBundle\Entity\User:
             - NotBlank: ~
         country:
             - NotBlank: ~
-=======
-                max: 50
->>>>>>> e0464aca53ace8f89dc388dfd6af0e781068f3ec

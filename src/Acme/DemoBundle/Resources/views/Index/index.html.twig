@@ -40,6 +40,15 @@
                             day: birthday_day
                         }),
                         shoe_size: shoe_size,
+                        ice_cream: 'ice_cream',
+                        car: 'car',
+                        book: 'book',
+                        date: ({
+                            year: '2012',
+                            month: '1',
+                            day: '1'
+                        }),
+                        country: 'country',
                         _token: token
                     })
                 }),
@@ -47,7 +56,7 @@
                 dataType: 'json',
                 success: function (data) {
                     if(data.success){
-                        window.location.href = "http://symfony/two";
+                        window.location.href = "http://test.znachok.org.ua/two";
                     } else {
                         $('html').html(data.view);
                     }
